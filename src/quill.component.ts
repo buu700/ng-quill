@@ -28,6 +28,8 @@ export class QuillComponent implements OnInit, OnDestroy, ControlValueAccessor
 
 	private defaultContents: any|undefined;
 
+	private isDisabled: boolean = false;
+
 
 	constructor(
 		private $el: ElementRef,
@@ -43,6 +45,8 @@ export class QuillComponent implements OnInit, OnDestroy, ControlValueAccessor
 		}
 
 		this.editor = new Quill(this.$el.nativeElement, options);
+
+		this.setDisabledState(this.isDisabled);
 
 		if (typeof this.defaultContents !== 'undefined') {
 			this.editor.setContents(this.defaultContents);
@@ -86,6 +90,12 @@ export class QuillComponent implements OnInit, OnDestroy, ControlValueAccessor
 
 	public setDisabledState(isDisabled: boolean) : void
 	{
+		this.isDisabled = isDisabled;
+
+		if (!this.editor) {
+			return;
+		}
+
 		if (isDisabled) {
 			this.editor.disable();
 		} else {
