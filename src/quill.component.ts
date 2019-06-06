@@ -84,6 +84,15 @@ export class QuillComponent implements OnInit, OnDestroy, ControlValueAccessor
 		this.onTouched = fn;
 	}
 
+	public setDisabledState(isDisabled: boolean) : void
+	{
+		if (isDisabled) {
+			this.editor.disable();
+		} else {
+			this.editor.enable();
+		}
+	}
+
 
 	protected getValue(): any|undefined
 	{
