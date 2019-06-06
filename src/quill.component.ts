@@ -24,7 +24,7 @@ export class QuillComponent implements OnInit, OnDestroy, ControlValueAccessor
 	@Input()
 	public options: any = null;
 
-	protected editor: Quill;
+	protected editor: Quill.Quill;
 
 	private defaultContents: any|undefined;
 
